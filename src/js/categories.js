@@ -61,7 +61,7 @@ window.Terror = [];
 window.Comedia = [];
 window.Drama = [];
 
-/*categories = [
+window.categories = [
     {
         name: 'ESTRENO',
         movies: window.Estreno
@@ -72,14 +72,14 @@ window.Drama = [];
     },
     {
         name: 'TERROR',
-        movies: []
+        movies: window.Terror
     },
     {
         name: 'COMEDIA',
-        movies: []
+        movies: window.Comedia
     },
     {
         name: 'DRAMA',
-        movies: []
+        movies: window.Drama
     }
-];*/
+];
