@@ -1,0 +1,73 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: arial, sans-serif;
+}
+.categories {
+    position:fixed;
+    background-color: red;
+    text-transform: uppercase;
+    overflow: hidden;
+    overflow-x: auto;
+    width: 100%;
+    z-index: 10;
+}
+.categories ul {
+    list-style: none;
+    padding: .8em;
+    margin: 0;
+    white-space: nowrap;
+}
+.categories ul li {
+    display: inline-block;
+    padding: .5em;
+    position: relative;
+}
+
+.categories ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.categories ul li a.active {
+    color: white;
+}
+
+.categories ul li a.active:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -13px;
+    height: 5px;
+    width: 100%;
+    background-color: white;
+}
+
+.movies-wrapper {
+    height: 100vh;
+}
+
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 64px;
+    padding-right: 4px;
+}
+.movies .movie {
+    width: 25%;
+    position: relative;
+    overflow: hidden;
+    margin: 2px 0;
+}
+.movies .movie a {
+    background: black;
+    margin-bottom: 130%;
+    display: block;
+    padding-left: 4px;
+}
+
+.movies .movie img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
