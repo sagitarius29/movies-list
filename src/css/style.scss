@@ -45,12 +45,14 @@ body {
 
 .movies-wrapper {
     height: 100vh;
+    position: relative;
+    overflow: hidden;
+    overflow-x: scroll;
 }
 
 .movies {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 64px;
     padding-right: 4px;
 }
 .movies .movie {
@@ -70,4 +72,12 @@ body {
     width: 100%;
     position: absolute;
     top: 0;
+}
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    padding-top: 64px;
+    right: -100%;
 }

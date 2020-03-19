@@ -5,16 +5,11 @@
   <title>Películas</title>
   <link rel="stylesheet" href="style.css">
   <script src="categories.js"></script>
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
 </head>
-<body onload="afterLoading()">
-  <div class="categories">
-    <ul>
-    </ul>
-  </div>
-  <div class="movies-wrapper">
-    <div class="movies">
-    </div>
+<body>
+  <div id="app">
+    <movies-component></movies-component>
   </div>
 </body>
 </html>

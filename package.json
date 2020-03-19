@@ -4,7 +4,7 @@
   "description": "Movies App",
   "main": "main.js",
   "dependencies": {
-    "xwiper": "^2.2.0"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
