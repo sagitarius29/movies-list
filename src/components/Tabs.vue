@@ -112,6 +112,28 @@
         // console.log('prev, currentpage: ' + currentpage);
         this.setPage(currentpage);
       },
+      showMenuSelected(page) {
+        if(page === undefined) {
+          return false;
+        }
+        let elements = document.querySelectorAll('.categories li');
+
+        if(elements.length === 0) {
+          return false;
+        }
+
+        let container = document.querySelector('.categories');
+        let containerWidth = container.offsetWidth;
+        let currentScrollLeft = container.scrollLeft;
+
+        let element = document.querySelectorAll('.categories li')[page];
+
+        if(element.offsetLeft < currentScrollLeft) {
+          container.scrollLeft = element.offsetLeft;
+        } else if((element.offsetLeft + element.offsetWidth) > (currentScrollLeft + containerWidth)) {
+          container.scrollLeft = (element.offsetLeft + element.offsetWidth) - containerWidth;
+        }
+      },
       reset() {
         this.setPage(this.currentPage);
       },
@@ -136,6 +158,7 @@
 
         });
         this.selectTab(this.tabs[page].tabHash);
+        this.showMenuSelected(page);
         this.$emit('changePage', this.currentPage);
         setTimeout(() => {
           if(!this.transitionOrnot) {

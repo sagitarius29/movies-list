@@ -11,6 +11,7 @@ body {
     overflow-x: auto;
     width: 100%;
     z-index: 10;
+    scroll-behavior: smooth;
 }
 .categories ul {
     list-style: none;
@@ -31,6 +32,16 @@ body {
 
 .categories ul li a.active {
     color: white;
+}
+
+.categories ul li a.active:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -13px;
+    height: 5px;
+    width: 100%;
+    background-color: white;
 }
 
 .categories ul li a.active:after {
