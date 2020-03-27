@@ -1,7 +1,7 @@
 <template>
     <div class="movies">
         <div class="movie" v-for="movie in movies">
-            <a :href="(movie.movie === undefined || movie.movie === '') ? '#' : movie.movie">
+            <a :href="(movie.url === undefined || movie.url === '') ? '#' : movie.url">
                 <img :src="movie.cover">
             </a>
         </div>
