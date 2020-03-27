@@ -160,6 +160,11 @@
         this.selectTab(this.tabs[page].tabHash);
         this.showMenuSelected(page);
         this.$emit('changePage', this.currentPage);
+
+        if(prevPage !== this.currentPage) {
+          document.querySelector('.tabContent-wrap').scrollTop = 0;
+        }
+
         setTimeout(() => {
           if(!this.transitionOrnot) {
             this.transitionOrnot = true;

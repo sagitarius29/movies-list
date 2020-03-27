@@ -2,7 +2,7 @@
     <div>
         <Tabs v-if="categories.length > 0" @changePage="onChangePage">
             <Tab :label="category.name" :hash="category.name" v-for="(category, index) in categories" :key="index">
-                <movies-list v-if="currentPage === index" :movies="category.movies"></movies-list>
+                <movies-list v-if="moviesShow(index)" :movies="category.movies"></movies-list>
             </Tab>
         </Tabs>
     </div>
@@ -30,6 +30,17 @@
       this.loadCategories();
     },
     methods: {
+      moviesShow(index) {
+        console.log(this.currentPage < this.currentPage.length - 1, index === this.currentPage + 1);
+        if(this.currentPage === index) {
+          return true;
+        } else if(this.currentPage > 0 && index === this.currentPage - 1) {
+          return true;
+        } else if(this.currentPage < this.categories.length - 1 && index === this.currentPage + 1) {
+          return true;
+        }
+        return false;
+      },
       onChangePage(idx) {
         this.loadMovies(idx);
         setTimeout(() => {
@@ -37,7 +48,7 @@
         }, 250);
       },
       loadCategories() {
-        axios.get(this.endpoint + '/categories?all=true').then(({data}) => {
+        axios.get(this.endpoint + '/categories?all=true&sort=order|asc').then(({data}) => {
           this.categories = _.forEach(data, (item) => {
             item.movies = [];
             return item;
