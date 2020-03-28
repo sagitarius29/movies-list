@@ -2,6 +2,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: arial, sans-serif;
+    background: black;
 }
 .categories {
     position:fixed;
@@ -83,7 +84,18 @@ body {
     width: 100%;
     position: absolute;
     top: 0;
+
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
 }
+
+.movies .movie a:focus img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
 .slide {
     position: absolute;
     width: 100%;
@@ -92,3 +104,4 @@ body {
     padding-top: 64px;
     right: -100%;
 }
+
