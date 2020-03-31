@@ -188,6 +188,8 @@
         const touchTime = new Date().getTime();
         // console.log('time:' + touchTime);
         this.touchPoint.startTime = touchTime;
+
+        this.$emit('tabTouchStart', event);
       },
       onTouchMove(event) {
         const touchPoint = event.changedTouches[0] || event.touches[0];
@@ -233,6 +235,8 @@
         this.swipeType = INIT;
         this.distance.left = 0;
         this.distance.top = 0;
+
+        this.$emit('tabTouchEnd', event);
       },
       initDPR() {
         var win = window;

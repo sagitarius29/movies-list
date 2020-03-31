@@ -66,18 +66,19 @@ body {
     display: flex;
     flex-wrap: wrap;
     padding-right: 4px;
+    padding-left: 4px;
 }
 .movies .movie {
-    width: 33.3%;
+    width: calc(33.3% - 4px);
     position: relative;
     overflow: hidden;
-    margin: 2px 0;
+    margin: 2px;
+    border-radius: 5%;
 }
 .movies .movie a {
     background: black;
     margin-bottom: 130%;
     display: block;
-    padding-left: 4px;
 }
 
 .movies .movie img {
