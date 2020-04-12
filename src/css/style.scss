@@ -106,3 +106,63 @@ body {
     right: -100%;
 }
 
+i.arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.header {
+    background: red;
+    color: white;
+    text-transform: uppercase;
+    height: 65px;
+    line-height: 65px;
+
+    > .header-back {
+        display: inline-block;
+        padding: 0 20px;
+        /*height: 100%;*/
+        background: red;
+        border: none;
+        margin: 0;
+    }
+}
+
+.item-list {
+    margin: 0;
+    padding: 0;
+    li > a {
+        padding: 1.5em;
+        display: block;
+        color: white;
+        text-decoration: none;
+        border-bottom: dotted 1px white;
+    }
+
+    .arrow {
+        right: 1.5em;
+        position: absolute;
+    }
+}

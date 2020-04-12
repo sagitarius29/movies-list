@@ -1,4 +1,5 @@
 {
-    "/dist/main.js": "/dist/main.js",
-    "/dist/style.css": "/dist/style.css"
+    "/dist/movies/main.js": "/dist/movies/main.js",
+    "/dist/series/style.css": "/dist/series/style.css",
+    "/dist/series/main_series.js": "/dist/series/main_series.js"
 }
