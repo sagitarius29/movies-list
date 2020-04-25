@@ -1,8 +1,9 @@
 <template>
     <div>
+        <search-component v-model="search"/>
         <Tabs v-if="categories.length > 0" @changePage="onChangePage" @tabTouchStart="tabOnTouch()" @tabTouchEnd="tabOnEndTouch">
             <Tab :label="category.name" :hash="category.name" v-for="(category, index) in categories" :key="index">
-                <series-list v-show="seriesShow(index)" :series="category.series" :cat-id="category.id"></series-list>
+                <series-list v-show="seriesShow(index)" :search="search" :series="category.series" :cat-id="category.id"></series-list>
             </Tab>
         </Tabs>
     </div>
@@ -13,17 +14,19 @@
   import Tab from './Tab';
   import axios from 'axios';
   import SeriesList from "./SeriesList";
+  import SearchComponent from "./SearchComponent";
 
   const _ = require('lodash');
 
   export default {
     name: "SeriesComponent",
-    components: {SeriesList, Tabs, Tab},
+    components: {SearchComponent, SeriesList, Tabs, Tab},
     data() {
       return {
         onTouch: false,
         categories: [],
-        currentPage: 0
+        currentPage: 0,
+        search: ''
       }
     },
     mounted() {
@@ -56,6 +59,7 @@
         setTimeout(() => {
           this.currentPage = idx;
         }, 250);
+        this.search = '';
       },
       loadCategories() {
         axios.get('/categories-series?all=true&sort=order|asc').then(({data}) => {

@@ -1,8 +1,9 @@
 <template>
     <div>
+        <search-component v-model="search"/>
         <Tabs v-if="categories.length > 0" @changePage="onChangePage" @tabTouchStart="tabOnTouch()" @tabTouchEnd="tabOnEndTouch">
             <Tab :label="category.name" :hash="category.name" v-for="(category, index) in categories" :key="index">
-                <movies-list v-show="moviesShow(index)" :movies="category.movies"></movies-list>
+                <movies-list v-show="moviesShow(index)" :movies="category.movies" :search="search"></movies-list>
             </Tab>
         </Tabs>
     </div>
@@ -13,18 +14,20 @@
   import Tab from './Tab';
   import MoviesList from "./MoviesList";
   import axios from 'axios';
+  import SearchComponent from "./SearchComponent";
 
   const _ = require('lodash');
 
   export default {
     name: "MoviesComponent",
-    components: {MoviesList, Tabs, Tab},
+    components: {SearchComponent, MoviesList, Tabs, Tab},
     data() {
       return {
         onTouch: false,
         endpoint: 'https://cpanels.us/api',
         categories: [],
-        currentPage: 0
+        currentPage: 0,
+        search: ''
       }
     },
     mounted() {
@@ -33,7 +36,6 @@
     methods: {
       tabOnTouch() {
         this.onTouch = true;
-        console.log('onTouch');
       },
       tabOnEndTouch() {
         this.onTouchEndDebounced(this);
@@ -57,6 +59,7 @@
         setTimeout(() => {
           this.currentPage = idx;
         }, 250);
+        this.search = '';
       },
       loadCategories() {
         axios.get(this.endpoint + '/categories?all=true&sort=order|asc').then(({data}) => {
