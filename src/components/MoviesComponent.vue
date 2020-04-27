@@ -24,7 +24,6 @@
     data() {
       return {
         onTouch: false,
-        endpoint: 'https://cpanels.us/api',
         categories: [],
         currentPage: 0,
         search: ''
@@ -62,7 +61,7 @@
         this.search = '';
       },
       loadCategories() {
-        axios.get(this.endpoint + '/categories?all=true&sort=order|asc').then(({data}) => {
+        axios.get('/categories?all=true&sort=order|asc').then(({data}) => {
           this.categories = _.forEach(data, (item) => {
             item.movies = [];
             return item;
@@ -73,7 +72,7 @@
         if(this.categories[idx].movies.length > 0) {
           return false;
         }
-        axios.get(this.endpoint + '/categories/'+this.categories[idx].id+'/movies?all=true').then(({data}) => {
+        axios.get('/categories/'+this.categories[idx].id+'/movies?all=true').then(({data}) => {
           this.categories[idx].movies = data;
         });
       }
