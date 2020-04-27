@@ -5,7 +5,11 @@
         </div>
         <div>
             <ul class="item-list">
-                <li v-for="chapter in chapters"><a :href="chapter.url">{{ chapter.name }} <i class="arrow right"></i></a></li>
+                <li v-for="chapter in chapters">
+                    <router-link v-if="ifRedirect(chapter.url)" :to="{name: 'videoplayer', params: {id: chapter.id, url: chapter.url, poster: season.serie.cover}}">{{ chapter.name }} <i class="arrow right"></i></router-link>
+                    <a v-else :href="chapter.url">{{ chapter.name }} <i class="arrow right"></i></a>
+                </li>
+                <!--<li v-for="chapter in chapters"><a :href="chapter.url">{{ chapter.name }} <i class="arrow right"></i></a></li>-->
             </ul>
         </div>
     </div>
@@ -33,9 +37,13 @@
         });
       },
       loadSeason() {
-        axios.get('series/'+this.$route.params.serie_id+'/seasons/' + this.$route.params.id).then(({data}) => {
+        axios.get('series/'+this.$route.params.serie_id+'/seasons/' + this.$route.params.id + '?withRelation=serie').then(({data}) => {
           this.season = data;
         });
+      },
+      ifRedirect(url) {
+        var detectMkv = new RegExp('\.mkv$','i');
+        return detectMkv.test(url);
       }
     }
   }

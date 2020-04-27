@@ -14,7 +14,6 @@
 <script>
   export default {
     name: "SeasonsPage",
-    props: ['serie'],
     data() {
       return {
         serie: {
